@@ -3,27 +3,20 @@
 namespace kosuhin\Yii2BaseKit\Services\Base;
 
 use kosuhin\Yii2BaseKit\Services\ArrayHelperService;
+use kosuhin\Yii2BaseKit\Services\Base\ServiceLocator\ServiceLocatorGetMagic;
+use kosuhin\Yii2BaseKit\Services\BaseServicesTrait;
 use kosuhin\Yii2BaseKit\Services\ConfigurationCheckService;
 use kosuhin\Yii2BaseKit\Services\ObjectHelperService;
 use kosuhin\Yii2BaseKit\Services\PaginatorHelperService;
+use kosuhin\Yii2BaseKit\Services\StaticViewService;
 use Yii;
 
 /**
  * @see SLBootstarper
  */
-class BaseServiceLocator
+class BaseServiceLocator extends ServiceLocatorGetMagic
 {
-    /** @var ObjectHelperService */
-    public $objectHelperService = ObjectHelperService::class;
-
-    /** @var ArrayHelperService */
-    public $arrayHelperService = ArrayHelperService::class;
-
-    /** @var PaginatorHelperService */
-    public $paginatorHelperService = PaginatorHelperService::class;
-
-    /** @var ConfigurationCheckService */
-    public $configurationCheckService = ConfigurationCheckService::class;
+    use BaseServicesTrait;
 
     /** @var static */
     private static $instance;
@@ -42,19 +35,6 @@ class BaseServiceLocator
         }
 
         return self::$instance;
-    }
-
-    /**
-     * If client wants some service return
-     * it by calling component name
-     *
-     * @param $name
-     * @return null|object
-     * @throws \yii\base\InvalidConfigException
-     */
-    public function __get($name)
-    {
-        return Yii::$app->get($name);
     }
 
     /**

@@ -88,7 +88,7 @@ class BaseControllerModificator extends Behavior
 
     /**
      * Событие после изменения сущности
-     * 
+     *
      * @param $event
      */
     public function handleAfterChangeEntity($event)

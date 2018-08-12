@@ -57,6 +57,49 @@ class SL extends BaseServiceLocator
     public $yourUsefullService = YourUsefullService::class;
 }
 ```
+Behaviours
+---
+in progress
+
+Builders
+---
+in progress
+
+Components
+---
+in progress
+
+Controllers
+---
+in progress
+
+Events
+---
+in progress
+
+Generators
+---
+in progress
+
+Menu
+---
+in progress
+
+Models
+---
+in progress
+
+Modificators
+---
+in progress
+
+Widgets
+---
+in progress
+
+Forms
+---
+in progress
 
 Testing
 ---
