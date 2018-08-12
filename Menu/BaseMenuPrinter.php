@@ -1,6 +1,6 @@
 <?php
 
-namespace kosuhin\Yii2BaseKit\Helpers\Menu;
+namespace kosuhin\Yii2BaseKit\Menu;
 
 class BaseMenuPrinter
 {

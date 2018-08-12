@@ -1,8 +1,8 @@
 <?php
 
-namespace kosuhin\Yii2BaseKit\Helpers;
+namespace kosuhin\Yii2BaseKit\Services;
 
-class ConfigurationsChecker
+class ConfigurationCheckService
 {
     public static function checkOption($optionDataIterator, $arrayOfNeededKeys)
     {
@@ -19,7 +19,6 @@ class ConfigurationsChecker
     public static function checkValue($optionDataIterator, $neededKey)
     {
         $keys = array_keys($optionDataIterator);
-
         if (!in_array($neededKey, $keys)) {
             throw new \LogicException('You must specify key '.$neededKey);
         }

@@ -9,6 +9,7 @@ class BaseComponent extends Component
 {
     /**
      * @return ArrayHelperService
+     * @throws \yii\base\InvalidConfigException
      */
     public function getArrayHelperService()
     {

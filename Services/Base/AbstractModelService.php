@@ -1,6 +1,6 @@
 <?php
 
-namespace kosuhin\Yii2BaseKit\Services;
+namespace kosuhin\Yii2BaseKit\Services\Base;
 
 /**
  * @deprecated You must to use BaseModelService. This service will be removed

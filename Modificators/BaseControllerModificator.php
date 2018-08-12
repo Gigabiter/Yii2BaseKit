@@ -1,6 +1,6 @@
 <?php
 
-namespace kosuhin\Yii2BaseKit\Behaviours;
+namespace kosuhin\Yii2BaseKit\Modificators;
 
 use kosuhin\Yii2BaseKit\Controllers\BaseCRUDController;
 use yii\base\Behavior;
@@ -24,14 +24,30 @@ class BaseControllerModificator extends Behavior
         ];
     }
 
+    /**
+     * Возможность что-то сделать после изменения сущности
+     * и выдачи флаш сообщения
+     *
+     * @param $event
+     */
     public function handleChangeAndMessageSent($event)
     {
     }
 
+    /**
+     * Возможность что-то сделать после удаления сущности
+     *
+     * @param $event
+     */
     public function handleAfterDelete($event)
     {
     }
 
+    /**
+     * Здесь возможно изменить хлебные крошки
+     *
+     * @param $event
+     */
     public function handleAfterBreadcrumbsSet($event)
     {
     }
@@ -60,10 +76,21 @@ class BaseControllerModificator extends Behavior
     {
     }
 
+    /**
+     * Возможность что-то изменить после создания запроса
+     * по получения списка моделей
+     *
+     * @param $event
+     */
     public function handleAfterIndexQueryCreated($event)
     {
     }
 
+    /**
+     * Событие после изменения сущности
+     * 
+     * @param $event
+     */
     public function handleAfterChangeEntity($event)
     {
     }

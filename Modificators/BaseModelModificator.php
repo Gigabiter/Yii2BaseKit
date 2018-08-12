@@ -1,6 +1,6 @@
 <?php
 
-namespace kosuhin\Yii2BaseKit\Behaviours;
+namespace kosuhin\Yii2BaseKit\Modificators;
 
 use kosuhin\Yii2BaseKit\Models\ActiveRecord;
 use yii\base\Behavior;

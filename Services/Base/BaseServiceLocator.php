@@ -1,10 +1,11 @@
 <?php
 
-namespace kosuhin\Yii2BaseKit\Services;
+namespace kosuhin\Yii2BaseKit\Services\Base;
 
-use kosuhin\Yii2BaseKit\Services\Helpers\ArrayHelperService;
-use kosuhin\Yii2BaseKit\Services\Helpers\ObjectHelperService;
-use kosuhin\Yii2BaseKit\Services\Helpers\PaginatorHelperService;
+use kosuhin\Yii2BaseKit\Services\ArrayHelperService;
+use kosuhin\Yii2BaseKit\Services\ConfigurationCheckService;
+use kosuhin\Yii2BaseKit\Services\ObjectHelperService;
+use kosuhin\Yii2BaseKit\Services\PaginatorHelperService;
 use Yii;
 
 /**
@@ -20,6 +21,9 @@ class BaseServiceLocator
 
     /** @var PaginatorHelperService */
     public $paginatorHelperService = PaginatorHelperService::class;
+
+    /** @var ConfigurationCheckService */
+    public $configurationCheckService = ConfigurationCheckService::class;
 
     /** @var static */
     private static $instance;

@@ -57,3 +57,18 @@ class SL extends BaseServiceLocator
     public $yourUsefullService = YourUsefullService::class;
 }
 ```
+
+Testing
+---
+- To run tests:
+```shell
+php ../../vendor/bin/codecept run
+```
+- To generate new unit test run command:
+```shell
+php ../../vendor/bin/codecept g:cest unit FirstCest
+```
+- To generate new functional test run command:
+```shell
+php ../../vendor/bin/codecept g:cest functional FirstCest
+```

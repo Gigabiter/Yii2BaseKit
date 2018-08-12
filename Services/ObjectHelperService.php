@@ -1,6 +1,6 @@
 <?php
 
-namespace kosuhin\Yii2BaseKit\Services\Helpers;
+namespace kosuhin\Yii2BaseKit\Services;
 
 use ReflectionClass;
 

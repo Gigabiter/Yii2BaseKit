@@ -1,6 +1,6 @@
 <?php
 
-namespace kosuhin\Yii2BaseKit\Services;
+namespace kosuhin\Yii2BaseKit\Services\Base;
 
 use kosuhin\Yii2BaseKit\Components\BaseComponent;
 
