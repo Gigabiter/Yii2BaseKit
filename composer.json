@@ -1,0 +1,11 @@
+{
+    "name": "kosuhin/yii2base-kit",
+    "description": "Yii2 base kit",
+    "authors": [
+        {
+            "name": "Evgeniy Kosuhin",
+            "email": "kosuha606@yandex.ru"
+        }
+    ],
+    "require": {}
+}
