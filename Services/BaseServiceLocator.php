@@ -2,6 +2,7 @@
 
 namespace kosuhin\Yii2BaseKit\Services;
 
+use kosuhin\Yii2BaseKit\Services\Helpers\ArrayHelperService;
 use kosuhin\Yii2BaseKit\Services\Helpers\ObjectHelperService;
 use kosuhin\Yii2BaseKit\Services\Helpers\PaginatorHelperService;
 use Yii;
@@ -13,6 +14,9 @@ class BaseServiceLocator
 {
     /** @var ObjectHelperService */
     public $objectHelperService = ObjectHelperService::class;
+
+    /** @var ArrayHelperService */
+    public $arrayHelperService = ArrayHelperService::class;
 
     /** @var PaginatorHelperService */
     public $paginatorHelperService = PaginatorHelperService::class;

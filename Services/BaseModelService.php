@@ -2,8 +2,8 @@
 
 namespace kosuhin\Yii2BaseKit\Services;
 
-use app\events\EventBeforeModelSave;
 use kosuhin\Yii2BaseKit\Behaviours\BaseModelModificator;
+use kosuhin\Yii2BaseKit\Events\ARManipulationEvent;
 use kosuhin\Yii2BaseKit\Helpers\ValueStub;
 use yii\base\Component;
 use yii\base\Event;
@@ -208,7 +208,7 @@ class BaseModelService extends Component
      * использовать ARModificators
      * @see ARModificators/
      */
-    public function onBeforeModelSave(EventBeforeModelSave $event)
+    public function onBeforeModelSave(ARManipulationEvent $event)
     {
         // Реализуется потомками =)
     }

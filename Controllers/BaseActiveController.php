@@ -32,6 +32,14 @@ class BaseActiveController extends BaseCRUDController
         ];
     }
 
+    /**
+     * TODO Добавить больше проверок для сервиса
+     *
+     * @param $service
+     * @param null $method
+     * @return mixed
+     * @throws \yii\base\InvalidConfigException
+     */
     public function actionService($service, $method = null)
     {
         $service = \Yii::$app->get($service);

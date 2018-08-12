@@ -5,6 +5,7 @@ namespace kosuhin\Yii2BaseKit\Models;
 use app\services\SL;
 use yii\base\Event;
 
+// TODO вероятнее всего нужно полностью прееделать это
 class ActiveRecord extends \yii\db\ActiveRecord
 {
     const EVENT_BEFORE_SAVE = 'eventBeforeSave';

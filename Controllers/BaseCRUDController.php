@@ -2,11 +2,10 @@
 
 namespace kosuhin\Yii2BaseKit\Controllers;
 
-use app\events\EventBeforeEntityChange;
-use app\events\EventBeforeModelSave;
 use app\helpers\AdminHelper;
 use app\services\SL;
 use kartik\grid\EditableColumnAction;
+use kosuhin\Yii2BaseKit\Events\ARManipulationEvent;
 use kosuhin\Yii2BaseKit\Forms\FilterForm;
 use kosuhin\Yii2BaseKit\Models\ActiveRecord;
 use kosuhin\Yii2BaseKit\Models\SoftDeletableAR;
@@ -122,14 +121,14 @@ class BaseCRUDController extends Controller
         $this->params['breadcrumbs'][] = ['label' => $modelClass::name()];
         $this->trigger(
             self::EVENT_AFTER_BREADCRUMBS_SET,
-            (new EventBeforeEntityChange(['entity' => null]))
+            (new ARManipulationEvent(['entity' => null]))
         );
         $ipp = Yii::$app->request->get('ipp', $this->ipp);
         $filterForm = $this->onFilter($filterForm);
         $query = $modelClass::search($filterForm->filters);
         $this->trigger(
             self::EVENT_AFTER_INDEX_QUERY_CREATED,
-            (new EventBeforeEntityChange(['entity' => &$query]))
+            (new ARManipulationEvent(['entity' => &$query]))
         );
         $order = ['id' => SORT_ASC];
         if ($query->orderBy) {
@@ -161,25 +160,25 @@ class BaseCRUDController extends Controller
         $model = new $modelClass();
         $this->trigger(
             self::EVENT_AFTER_CREATE_MODEL_INIT,
-            (new EventBeforeEntityChange(['entity' => &$model]))
+            (new ARManipulationEvent(['entity' => &$model]))
         );
         $this->params['breadcrumbs'][] = ['label' => $modelClass::name(), 'url' => Url::toRoute(['index'])];
         $this->params['breadcrumbs'][] = ['label' => $model->getMenuName()];
         $this->trigger(
             self::EVENT_AFTER_BREADCRUMBS_SET,
-            (new EventBeforeEntityChange(['entity' => $model]))
+            (new ARManipulationEvent(['entity' => $model]))
         );
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             // TODO пересмотреть это событие, возможно лучше передвавать обработку только в сервис
             $this->trigger(
                 self::EVENT_BEFORE_CHANGE_ENTITY,
-                (new EventBeforeEntityChange(['entity' => $model]))
+                (new ARManipulationEvent(['entity' => $model]))
             );
             $this->triggerModelServiceBeforeSave($model);
             $model->save();
             $this->trigger(
                 self::EVENT_AFTER_CHANGE_ENTITY,
-                (new EventBeforeEntityChange(['entity' => $model]))
+                (new ARManipulationEvent(['entity' => $model]))
             );
             $modelName = ' ';
             if ($model instanceof \kosuhin\Yii2BaseKit\Models\ActiveRecord) {
@@ -188,7 +187,7 @@ class BaseCRUDController extends Controller
             Yii::$app->getSession()->setFlash('success', 'Успешно создано'.$modelName);
             $this->trigger(
                 self::EVENT_AFTER_CHANGE_AND_MESSAGE_SENT,
-                (new EventBeforeEntityChange(['entity' => $model]))
+                (new ARManipulationEvent(['entity' => $model]))
             );
             return $this->redirect('index');
         }
@@ -207,25 +206,25 @@ class BaseCRUDController extends Controller
         }
         $this->trigger(
             self::EVENT_AFTER_UPDATE_MODEL_INIT,
-            (new EventBeforeEntityChange(['entity' => &$model]))
+            (new ARManipulationEvent(['entity' => &$model]))
         );
         $this->params['breadcrumbs'][] = ['label' => $modelClass::name(), 'url' => Url::toRoute(['index'])];
         $this->params['breadcrumbs'][] = ['label' => $model->getMenuName()];
         $this->trigger(
             self::EVENT_AFTER_BREADCRUMBS_SET,
-            (new EventBeforeEntityChange(['entity' => $model]))
+            (new ARManipulationEvent(['entity' => $model]))
         );
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             // TODO пересмотреть это событие, возможно лучше передвавать обработку только в сервис
             $this->trigger(
                 self::EVENT_BEFORE_CHANGE_ENTITY,
-                (new EventBeforeEntityChange(['entity' => $model]))
+                (new ARManipulationEvent(['entity' => $model]))
             );
             $this->triggerModelServiceBeforeSave($model);
             $model->save();
             $this->trigger(
                 self::EVENT_AFTER_CHANGE_ENTITY,
-                (new EventBeforeEntityChange(['entity' => $model]))
+                (new ARManipulationEvent(['entity' => $model]))
             );
             $modelName = ' ';
             if ($model instanceof \kosuhin\Yii2BaseKit\Models\ActiveRecord) {
@@ -235,13 +234,13 @@ class BaseCRUDController extends Controller
             if (isset($_POST['apply']) && $_POST['apply'] === '1') {
                 $this->trigger(
                     self::EVENT_AFTER_CHANGE_AND_MESSAGE_SENT,
-                    (new EventBeforeEntityChange(['entity' => $model]))
+                    (new ARManipulationEvent(['entity' => $model]))
                 );
                 return $this->refresh();
             }
             $this->trigger(
                 self::EVENT_AFTER_CHANGE_AND_MESSAGE_SENT,
-                (new EventBeforeEntityChange(['entity' => $model]))
+                (new ARManipulationEvent(['entity' => $model]))
             );
 
             return $this->refresh();
@@ -277,7 +276,7 @@ class BaseCRUDController extends Controller
         }
         $this->trigger(
             self::EVENT_AFTER_DELETE_ENTITY,
-            (new EventBeforeEntityChange(['entity' => $model]))
+            (new ARManipulationEvent(['entity' => $model]))
         );
 
         return $this->redirect('index');
@@ -351,7 +350,7 @@ class BaseCRUDController extends Controller
         $serviceName = AdminHelper::serviceClassToServiceName($this->modelService);
         Yii::$app->get($serviceName)->trigger(
             AbstractModelService::EVENT_BEFORE_MODEL_SAVE,
-            (new EventBeforeModelSave(['entity' => $model]))
+            (new ARManipulationEvent(['entity' => $model]))
         );
     }
 }
