@@ -1,6 +1,27 @@
-Yii2BaseKit
+# Yii2BaseKit
+
+
+Installation
 ---
 
+Now this package in deep alpha status. And I don't recomend to use composer to install this
+package.
+
+You can create directory `kosuhin` in your project and configure
+your `composer.json` like follow:
+```json
+...
+"autoload": {
+    "psr-4": {
+      "kosuhin\\": "kosuhin/"
+    }
+},
+...
+```
+
+
+Services
+---
 This is a set of logic what I use in my projects on Yii2.
 Here is most important thing is service locator what give 
 access to services.
