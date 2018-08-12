@@ -23,6 +23,8 @@ class.
 After this configuration you will be able to use services like follow:
 ```php
 SL::o()->serviceName->serviceMethod();
+// or from yii2
+\Yii::$app->get('serviceName');
 ```
 
 To add new service in service locator just specify new
