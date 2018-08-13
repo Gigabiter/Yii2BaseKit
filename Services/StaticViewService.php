@@ -16,6 +16,19 @@ class StaticViewService
     public function render(\yii\base\View $view, $fileName, $params)
     {
         $content = $view->render($fileName);
+
+        return $this->renderLogic($content, $params);
+    }
+
+    public function renderFile($fileName, $params)
+    {
+        $content = file_get_contents($fileName);
+
+        return $this->renderLogic($content, $params);
+    }
+
+    private function renderLogic($content, $params)
+    {
         $paramKeys = $paramValues = [];
         foreach ($params as $key => $val) {
             $isObject = is_object($val);

@@ -4,7 +4,6 @@ namespace kosuhin\Yii2BaseKit\Services\Base;
 
 use kosuhin\Yii2BaseKit\Services\ArrayHelperService;
 use kosuhin\Yii2BaseKit\Services\Base\ServiceLocator\ServiceLocatorGetMagic;
-use kosuhin\Yii2BaseKit\Services\BaseServicesTrait;
 use kosuhin\Yii2BaseKit\Services\ConfigurationCheckService;
 use kosuhin\Yii2BaseKit\Services\ObjectHelperService;
 use kosuhin\Yii2BaseKit\Services\PaginatorHelperService;
@@ -16,26 +15,20 @@ use Yii;
  */
 class BaseServiceLocator extends ServiceLocatorGetMagic
 {
-    use BaseServicesTrait;
+    /** @var ObjectHelperService */
+    public $objectHelperService = ObjectHelperService::class;
 
-    /** @var static */
-    private static $instance;
+    /** @var ArrayHelperService */
+    public $arrayHelperService = ArrayHelperService::class;
 
-    private function __construct()
-    {
-    }
+    /** @var PaginatorHelperService */
+    public $paginatorHelperService = PaginatorHelperService::class;
 
-    /**
-     * @return static
-     */
-    public static function o()
-    {
-        if (!self::$instance) {
-            self::$instance = new self();
-        }
+    /** @var ConfigurationCheckService */
+    public $configurationCheckService = ConfigurationCheckService::class;
 
-        return self::$instance;
-    }
+    /** @var StaticViewService */
+    public $staticViewService = StaticViewService::class;
 
     /**
      * Place all registerd compoentns to

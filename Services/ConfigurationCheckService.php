@@ -4,7 +4,13 @@ namespace kosuhin\Yii2BaseKit\Services;
 
 class ConfigurationCheckService
 {
-    public static function checkOption($optionDataIterator, $arrayOfNeededKeys)
+    /**
+     * Check set of options in configuration array
+     *
+     * @param $optionDataIterator
+     * @param $arrayOfNeededKeys
+     */
+    public static function checkOptions($optionDataIterator, $arrayOfNeededKeys)
     {
         foreach ($optionDataIterator as $optionData) {
             $keys = array_keys($optionData);
@@ -16,6 +22,12 @@ class ConfigurationCheckService
         }
     }
 
+    /**
+     * Check one option in configurartoin array
+     *
+     * @param $optionDataIterator
+     * @param $neededKey
+     */
     public static function checkValue($optionDataIterator, $neededKey)
     {
         $keys = array_keys($optionDataIterator);

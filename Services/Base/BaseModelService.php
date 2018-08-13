@@ -109,13 +109,18 @@ class BaseModelService extends Component
             $orderDirection = 'DESC';
         }
         $order = str_replace('-', '', $order) . ' ' . $orderDirection;
-        $models = $this->getAllCondition([], false, $order, $fromLimit);
+        $models = $this->getAllCondition([], true, $order, $fromLimit);
+        if (BaseServiceLocator::o()->arrayHelperService->getValue($_GET, 'plain', false)) {
+            foreach ($models as &$model) {
+                $model = array_values($model);
+            }
+        }
 
         return [
             'status' => (bool)count($models),
             'total' => (int)$total,
             'pageCount' => (int)$pageCount,
-            'entities' => $models,
+            'data' => $models,
         ];
     }
 
