@@ -84,6 +84,6 @@ class ArrayHelperService
      */
     public function getValue($array, $key, $default = null)
     {
-        return isset($array[$key]) ? Html::encode($array[$key]) : $default;
+        return isset($array[$key]) ? $array[$key] : $default;
     }
 }

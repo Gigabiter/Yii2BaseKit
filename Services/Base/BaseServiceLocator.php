@@ -8,6 +8,7 @@ use kosuhin\Yii2BaseKit\Services\ConfigurationCheckService;
 use kosuhin\Yii2BaseKit\Services\ObjectHelperService;
 use kosuhin\Yii2BaseKit\Services\PaginatorHelperService;
 use kosuhin\Yii2BaseKit\Services\StaticViewService;
+use kosuhin\Yii2BaseKit\Services\TreeService;
 use Yii;
 
 /**
@@ -29,6 +30,9 @@ class BaseServiceLocator extends ServiceLocatorGetMagic
 
     /** @var StaticViewService */
     public $staticViewService = StaticViewService::class;
+
+    /** @var TreeService */
+    public $treeService = TreeService::class;
 
     /**
      * Place all registerd compoentns to

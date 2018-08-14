@@ -4,7 +4,7 @@ namespace kosuhin\Yii2BaseKit\Services\Base;
 
 use kosuhin\Yii2BaseKit\Behaviours\BaseModelModificator;
 use kosuhin\Yii2BaseKit\Events\ARManipulationEvent;
-use kosuhin\Yii2BaseKit\Helpers\ValueStub;
+use kosuhin\Yii2BaseKit\Models\ValueStub;
 use yii\base\Component;
 use yii\base\Event;
 use yii\data\ActiveDataProvider;

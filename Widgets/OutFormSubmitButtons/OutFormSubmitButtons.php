@@ -2,7 +2,7 @@
 
 namespace kosuhin\Yii2BaseKit\Widgets\OutFormSubmitButtons;
 
-use kosuhin\Yii2BaseKit\Helpers\ConfigurationsChecker;
+use kosuhin\Yii2BaseKit\Services\Base\BaseServiceLocator;
 use yii\base\Widget;
 use yii\web\View;
 
@@ -21,9 +21,9 @@ class OutFormSubmitButtons extends Widget
 
     public function init()
     {
-        ConfigurationsChecker::checkOption($this->options['buttons'], ['type', 'name', 'label', 'class']);
-        ConfigurationsChecker::checkValue($this->options, 'form_id');
-        ConfigurationsChecker::checkValue($this->options, 'action_field');
+        BaseServiceLocator::o()->configurationCheckService->checkOptions($this->options['buttons'], ['type', 'name', 'label', 'class']);
+        BaseServiceLocator::o()->configurationCheckService->checkValue($this->options, 'form_id');
+        BaseServiceLocator::o()->configurationCheckService->checkValue($this->options, 'action_field');
         OutFormSubmitButtonsAsset::register( $this->getView() );
         parent::init();
     }

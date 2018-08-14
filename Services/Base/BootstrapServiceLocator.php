@@ -45,8 +45,8 @@ class BootstrapServiceLocator extends BaseComponent
             ->getValue($this->api, 'controller', '/api/service');
         \Yii::$app->getUrlManager()->addRules(
             [
+                '/api/v' . $version . '/<_format>/<service>/<method>' => $clientApiController,
                 '/api/v' . $version . '/<_format>/<service>' => $clientApiController,
-                '/api/v' . $version . '/<_format>/<service>/<method>' => $clientApiController
             ]
         );
     }

@@ -47,12 +47,13 @@ class BaseActiveController extends BaseCRUDController
             throw new \LogicException('Сервис не существует');
         }
         if ($method) {
-            $method = 'api' . $method;
+            $method = 'api' . ucfirst($method);
             if (!method_exists($service, $method)) {
                 throw new \LogicException('Метод не существует');
             }
+        } else {
+            $method = 'apiHandleEntity';
         }
-        $method = 'apiHandleEntity';
 
         return $service->$method();
     }

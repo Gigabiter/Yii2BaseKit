@@ -1,6 +1,6 @@
 <?php
 
-namespace kosuhin\Yii2BaseKit\Helpers;
+namespace kosuhin\Yii2BaseKit\Models;
 
 class ValueStub
 {
