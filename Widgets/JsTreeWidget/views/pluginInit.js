@@ -29,6 +29,10 @@ window.__widgetName__ = {
                         "multiple": __options.multiple__,
                         'data' : treeData
                     },
+                    "search": {
+                        "case_insensitive": true,
+                        "show_only_matches" : true
+                    },
                     "plugins": __plugins__
                 });
                 $('__searchId__').unbind('keyup');

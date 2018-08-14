@@ -38,16 +38,13 @@ class BootstrapServiceLocator extends BaseComponent
 
     private function configureServicesApi()
     {
-        $version = $this->getArrayHelperService()
-            ->getValue($this->api, 'version', 1);
-        $clientApiController = $this
-            ->getArrayHelperService()
-            ->getValue($this->api, 'controller', '/api/service');
-        \Yii::$app->getUrlManager()->addRules(
-            [
-                '/api/v' . $version . '/<_format>/<service>/<method>' => $clientApiController,
-                '/api/v' . $version . '/<_format>/<service>' => $clientApiController,
-            ]
-        );
+        $version = $this->getArrayHelperService()->getValue($this->api, 'version', 1);
+        $clientApiController = $this->getArrayHelperService()->getValue($this->api, 'controller', '/api/service');
+        $rules = ['/api/v' . $version . '/<_format>/<service>/<method>' => $clientApiController];
+        if ($isApiCrudEnable = $this->getArrayHelperService()->getValue($this->api, 'crudEnable', false)) {
+            $rules['/api/v' . $version . '/<_format>/<service>'] =  $clientApiController;
+        }
+
+        \Yii::$app->getUrlManager()->addRules($rules);
     }
 }
